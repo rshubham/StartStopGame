@@ -7,7 +7,7 @@ public class Oscillator implements Runnable {
     private int currPosition, lowerBound, upperBound;
     private boolean startIndicator;
     private boolean forwardFlag;
-    Thread currentThread;
+    private Thread currentThread;
 
     private Oscillator(){
 
