@@ -32,7 +32,7 @@ public class Oscillator implements Runnable {
     @Override
     public void run() {
         try {
-            OscillatorUtil.runOscillator(this);
+            OscillatorUtil.getOscillatorInstance().runOscillator();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

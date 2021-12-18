@@ -5,9 +5,7 @@ import com.startStopGame.receiver.Oscillator;
 public class OscillatorUtil {
 
 
-    private OscillatorUtil(){
-
-    }
+    private OscillatorUtil(){}
 
     private static class OscillatorUtilHelper {
         private static OscillatorUtil instance = new OscillatorUtil();
@@ -19,7 +17,7 @@ public class OscillatorUtil {
 
     Oscillator oscillator = Oscillator.getOscillatorInstance();
 
-    public static void runOscillator(Oscillator oscillator) throws InterruptedException {
+    public void runOscillator() throws InterruptedException {
 
         while(oscillator.isStartIndicator()){
             Thread.sleep(10);
