@@ -5,7 +5,8 @@ import com.startStopGame.util.OscillatorUtil;
 
 public class StartGameCommand implements GameCommand {
 
-    OscillatorUtil oscillatorUtil;
+    OscillatorUtil oscillatorUtil = OscillatorUtil.getOscillatorInstance();
+
 
     public StartGameCommand(int lowerBound, int upperBound){
         oscillatorUtil.setOscillatorRange(lowerBound,upperBound);

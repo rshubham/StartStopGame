@@ -4,9 +4,22 @@ import com.startStopGame.receiver.Oscillator;
 
 public class OscillatorUtil {
 
+
+    private OscillatorUtil(){
+
+    }
+
+    private static class OscillatorUtilHelper {
+        private static OscillatorUtil instance = new OscillatorUtil();
+    }
+
+    public static OscillatorUtil getOscillatorInstance(){
+        return OscillatorUtilHelper.instance;
+    }
+
     Oscillator oscillator = Oscillator.getOscillatorInstance();
 
-    public void runOscillator() throws InterruptedException {
+    public static void runOscillator(Oscillator oscillator) throws InterruptedException {
 
         while(oscillator.isStartIndicator()){
             Thread.sleep(10);
