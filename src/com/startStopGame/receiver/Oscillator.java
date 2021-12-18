@@ -1,5 +1,7 @@
 package com.startStopGame.receiver;
 
+import com.startStopGame.util.OscillatorUtil;
+
 public class Oscillator implements Runnable {
 
     private int currPosition, lowerBound, upperBound;
@@ -7,15 +9,50 @@ public class Oscillator implements Runnable {
     private boolean forwardFlag;
     Thread currentThread;
 
-    private Oscillator(){}
+    private Oscillator(){
+
+    }
+
+    public void setLowerBound(int lowerBound) {
+        this.lowerBound = lowerBound;
+    }
+
+    public void setUpperBound(int upperBound) {
+        this.upperBound = upperBound;
+    }
+
+    public boolean isStartIndicator() {
+        return startIndicator;
+    }
+
+    public void setStartIndicator(boolean startIndicator) {
+        this.startIndicator = startIndicator;
+    }
 
     @Override
     public void run() {
         try {
-            runOscillator();
+            OscillatorUtil.runOscillator(this);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public int getLowerBound(){
+        return this.lowerBound;
+    }
+
+    public int getUpperBound(){
+        return this.upperBound;
+    }
+
+
+    public boolean isForwardFlag() {
+        return forwardFlag;
+    }
+
+    public void setForwardFlag(boolean forwardFlag) {
+        this.forwardFlag = forwardFlag;
     }
 
     private static class OscillatorHelper {
@@ -26,37 +63,20 @@ public class Oscillator implements Runnable {
         return OscillatorHelper.instance;
     }
 
-    // setting range for Oscillator
-    public void setOscillatorRange(int lowerBound, int upperBound){
-        this.lowerBound = lowerBound;
-        this.upperBound = upperBound;
-        this.currPosition = lowerBound;
+    public Thread getCurrentThread() {
+        return currentThread;
     }
 
-    public void runOscillator() throws InterruptedException {
-        while(this.startIndicator && !this.currentThread.isInterrupted()){
-            Thread.sleep(10);
-            if(this.currPosition == 1) this.forwardFlag = true;
-            if(this.currPosition == this.upperBound) this.forwardFlag = false;
-            if(this.forwardFlag) this.currPosition++;
-            else this.currPosition--;
-        }
-    }
-
-
-    public void startOscillator() throws InterruptedException {
-        this.startIndicator = true;
-        this.currentThread = new Thread(this);
-        this.currentThread.start();
-    }
-
-    public void stopOscillator(){
-        this.startIndicator = false;
-        System.out.println("CurrPosition : "+ this.currPosition);
+    public void setCurrentThread(Thread currentThread) {
+        this.currentThread = currentThread;
     }
 
     public int getCurrPosition(){
         return this.currPosition;
+    }
+
+    public void setCurrPosition(int currPosition){
+        this.currPosition = currPosition;
     }
 
 }

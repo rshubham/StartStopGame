@@ -1,15 +1,18 @@
 package com.startStopGame.commands;
 
 import com.startStopGame.receiver.Oscillator;
+import com.startStopGame.util.OscillatorUtil;
 
 public class StartGameCommand implements GameCommand {
 
+    OscillatorUtil oscillatorUtil;
+
     public StartGameCommand(int lowerBound, int upperBound){
-        Oscillator.getOscillatorInstance().setOscillatorRange(lowerBound,upperBound);
+        oscillatorUtil.setOscillatorRange(lowerBound,upperBound);
     }
 
     @Override
     public void executeCommand() throws InterruptedException {
-        Oscillator.getOscillatorInstance().startOscillator();
+        oscillatorUtil.startOscillator();
     }
 }

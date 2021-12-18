@@ -1,11 +1,14 @@
 package com.startStopGame.commands;
 
 import com.startStopGame.receiver.Oscillator;
+import com.startStopGame.util.OscillatorUtil;
 
 public class StopGameCommand implements GameCommand {
 
+    OscillatorUtil oscillatorUtil;
+
     @Override
     public void executeCommand() throws InterruptedException {
-        Oscillator.getOscillatorInstance().stopOscillator();
+        oscillatorUtil.stopOscillator();
     }
 }
