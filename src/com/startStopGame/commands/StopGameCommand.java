@@ -1,6 +1,5 @@
 package com.startStopGame.commands;
 
-import com.startStopGame.receiver.Oscillator;
 import com.startStopGame.util.OscillatorUtil;
 
 public class StopGameCommand implements GameCommand {

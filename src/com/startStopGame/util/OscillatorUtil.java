@@ -1,6 +1,7 @@
 package com.startStopGame.util;
 
-import com.startStopGame.receiver.Oscillator;
+import com.startStopGame.models.Oscillator;
+import com.startStopGame.processors.OscillationProcessor;
 
 public class OscillatorUtil {
 
@@ -38,7 +39,7 @@ public class OscillatorUtil {
     public void startOscillator() {
 
         oscillator.setStartIndicator(true);
-        oscillator.setCurrentThread(new Thread(oscillator));
+        oscillator.setCurrentThread(new Thread(OscillationProcessor.getOscillationProcessorInstance()));
         oscillator.getCurrentThread().start();
     }
 

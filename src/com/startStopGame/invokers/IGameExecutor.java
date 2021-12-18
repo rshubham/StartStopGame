@@ -1,6 +1,4 @@
-package com.startStopGame.invoker;
-
-import com.startStopGame.commands.GameCommand;
+package com.startStopGame.invokers;
 
 public interface IGameExecutor {
     public void execute() throws InterruptedException;

@@ -1,16 +1,20 @@
-package com.startStopGame.receiver;
+package com.startStopGame.models;
 
-import com.startStopGame.util.OscillatorUtil;
-
-public class Oscillator implements Runnable {
+public class Oscillator {
 
     private int currPosition, lowerBound, upperBound;
     private boolean startIndicator;
     private boolean forwardFlag;
     private Thread currentThread;
 
-    private Oscillator(){
+    private Oscillator(){}
 
+    private static class OscillatorHelper {
+        private static Oscillator instance = new Oscillator();
+    }
+
+    public static Oscillator getOscillatorInstance(){
+        return OscillatorHelper.instance;
     }
 
     public void setLowerBound(int lowerBound) {
@@ -29,15 +33,6 @@ public class Oscillator implements Runnable {
         this.startIndicator = startIndicator;
     }
 
-    @Override
-    public void run() {
-        try {
-            OscillatorUtil.getOscillatorInstance().runOscillator();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     public int getLowerBound(){
         return this.lowerBound;
     }
@@ -46,21 +41,12 @@ public class Oscillator implements Runnable {
         return this.upperBound;
     }
 
-
     public boolean isForwardFlag() {
         return forwardFlag;
     }
 
     public void setForwardFlag(boolean forwardFlag) {
         this.forwardFlag = forwardFlag;
-    }
-
-    private static class OscillatorHelper {
-        private static Oscillator instance = new Oscillator();
-    }
-
-    public static Oscillator getOscillatorInstance(){
-        return OscillatorHelper.instance;
     }
 
     public Thread getCurrentThread() {

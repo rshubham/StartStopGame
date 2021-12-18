@@ -1,4 +1,4 @@
-package com.startStopGame.invoker;
+package com.startStopGame.invokers;
 
 import com.startStopGame.commands.GameCommand;
 

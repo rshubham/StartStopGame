@@ -3,9 +3,9 @@ package com.startStopGame;
 import com.startStopGame.commands.GameCommand;
 import com.startStopGame.commands.StartGameCommand;
 import com.startStopGame.commands.StopGameCommand;
-import com.startStopGame.invoker.GameExecutor;
-import com.startStopGame.invoker.IGameExecutor;
-import com.startStopGame.receiver.Oscillator;
+import com.startStopGame.invokers.GameExecutor;
+import com.startStopGame.invokers.IGameExecutor;
+import com.startStopGame.models.Oscillator;
 
 import java.util.Scanner;
 
